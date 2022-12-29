@@ -1,6 +1,6 @@
 
 // Add items to cart
-export const addCart = (product) => {
+export const addCart = (product) =>{
     return {
         type: "ADDITEM",
         payload: product
@@ -8,7 +8,7 @@ export const addCart = (product) => {
 }
 
 // Delete items Form cart
-export const delCart = (product) => {
+export const delCart = (product) =>{
     return {
         type: "DELITEM",
         payload: product

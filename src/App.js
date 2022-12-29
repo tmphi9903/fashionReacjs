@@ -4,7 +4,7 @@ import Home from './component/Home';
 import Products from './component/Products';
 import { Route, Routes } from 'react-router-dom';
 import Detailproduct from './component/Detailproduct';
-import Footer from './component/Footer';
+
 
 function App() {
   return (
@@ -23,7 +23,6 @@ function App() {
 
 
 
-      <Footer />
     </>
   );
 }

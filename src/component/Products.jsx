@@ -19,14 +19,14 @@ export default function Products() {
                 setLoading(false);
 
             }
-            return () => {
-                // eslint-disable-next-line react-hooks/exhaustive-deps
-                componentMounted = false;
-            }
+            // return () => {
+            //  //eslint-disable-next-line react-hooks/exhaustive-deps
+            //     componentMounted = false;
+            // }
         }
 
         getProducts();
-    }, []);
+    },[componentMounted]);
 
 
     //khung đợi
@@ -65,16 +65,17 @@ export default function Products() {
                     <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
 
                 </div>
+                <hr className='shadow-lg' />
                 {filter.map((product) => {
                     return (
                         <>
-                            <div className="col-md-3 mb-4">
-                                <div className="card h-100 text-center p-4" key={product.id}>
+                            <div className="col-md-3 mb-4 text-black">
+                                <div className="card h-100 text-center p-4 shadow-lg" key={product.id}>
                                     <img src={product.image} className="card-img-top" alt={product.title} height={250}/>
                                         <div className="card-body">
                                             <h5 className="card-title mb-0">{product.title.substring(0,12)}</h5>
                                             <p className="card-text lead fw-bold">${product.price}</p>
-                                            <NavLink to={`/detailproduct/${product.id}`} className="btn btn-outline-dark">
+                                            <NavLink to={`/detailproduct/${product.id}`} className="btn btn-outline-dark shadow-lg">
                                                 Buy now
                                             </NavLink>
                                         </div>
@@ -89,14 +90,15 @@ export default function Products() {
     }
 
     return (
-        <div>
+        <div className='shadow-lg'>
             <div className="container my-5 py-5">
-                <div className="row">
-                    <div className="col-12 mb-5">
-                        <h1 className='display-6 fw-bolder text-center'>Latest Products</h1>
-                        <hr />
+                <div className="row justify-content-center shadow-lg">
+                    <div className="col-12 shadow-lg">
+                        <h1 className='display-6 lead text-uppercase fw-bold text-black text-center'>Latest Products</h1>
+                        
                     </div>
-                    <div className="row justify-content-center">
+                    <hr className='shadow-lg'/>
+                    <div className=" row justify-content-center">
                         {loading ? <Loading />:<ShowProducts />}
                     </div>
                 </div>
