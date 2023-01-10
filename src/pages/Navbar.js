@@ -1,19 +1,32 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 
-
+//-- redux cart
+import { useSelector } from 'react-redux';
 
 export default function Navbar() {
+
+    const cart = useSelector((state) => state.cart)
+
+    const getTotalQuantity = () => {
+        let total = 0
+        cart.forEach(item => {
+            total += item.quantity
+        })
+        return total
+    }
     return (
         <div className='bg-light shadow-lg'>
-            <nav className="navbar navbar-expand-lg py-3 shadow-sm fw-bold">
+            <nav className="navbar navbar-inverse navbar-expand-lg py-3 shadow-lg fw-bold">
                 <div className="container shadow-sm">
+
                     <NavLink className="navbar-brand fs-4" to="/">MEANFI SHOP</NavLink>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+
+                    <div className="collapse navbar-collapse" id="navBar">
+                        <ul className="nav navbar-nav mx-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <NavLink className="nav-link" aria-current="page" to="/">Home</NavLink>
                             </li>
@@ -30,12 +43,14 @@ export default function Navbar() {
                         <div className="buttons">
                             <NavLink to="/login" className="btn btn-outline-dark "><i className="fa fa-sign-in me-1"></i>Login</NavLink>
                             <NavLink to="/register" className="btn btn-outline-dark ms-2"><i className="fa fa-user-plus me-1"></i>Register</NavLink>
-                            <NavLink to="/cart" className="btn btn-outline-dark ms-2"><i className="fa fa-shopping-cart me-1"></i>Cart(0)</NavLink>
+                            <NavLink to="/cart" className="btn btn-outline-dark ms-2">
+                                <i className="fa fa-shopping-cart me-1"></i>
+                                {getTotalQuantity()}
+                            </NavLink>
                         </div>
                     </div>
                 </div>
             </nav>
-            <hr className='shadow-lg' />
         </div>
     )
 }

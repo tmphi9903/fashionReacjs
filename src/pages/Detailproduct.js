@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
-// import {useDispatch } from 'react-redux';
-// import { addCart } from '../redux/action';
+
 
 import { NavLink } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
-//import Products from './Products';
+
+
+// redux cart
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartSlice';
+
+
+
+// -- Redux
+
+
 
 
 export default function DetailProduct() {
@@ -14,14 +23,9 @@ export default function DetailProduct() {
     const [product, setProduct] = useState([]);
     const { id } = useParams();
 
+   
+    const dispatch = useDispatch()
 
-    // Create a new product in to Cart
-    // const dispatch = useDispatch();
-    // const addProduct = (product) =>{
-    //     dispatch(addCart(product));
-    // }
-
-    //console.log(id);
 
     useEffect(() => {
 
@@ -35,11 +39,13 @@ export default function DetailProduct() {
         }
         getProduct();
 
-    })
+    
+    },[])
 
 
     //Từ id show details product
     const ShowDetailProduct = () => {
+
         return (
             <>
                 <div className='row'>
@@ -63,12 +69,27 @@ export default function DetailProduct() {
                             ${product.price}
                         </h3>
                         <p className="lead">{product.description}</p>
-                        <button className="btn btn-outline-dark shadow-lg px-4 py-2"
-                        //onClick={() => addProduct(product)}
-                        >
-                            Add to cart
+             
+                        <button className="btn btn-outline-dark shadow-lg px-4 py-2" 
+                                onClick={
+                                    () => dispatch(addToCart(
+                                    {
+                                        product: {
+                                            id: product.id,
+                                            title: product.title,
+                                            image: product.image,
+                                            price: product.price
+                                              
+                                        }
+                                    }))
+                                }>
+                                    
+                            Add to Cart
+
                         </button>
-                        <NavLink to='/cart' className='btn btn-outline-dark shadow-lg ms-2 px-3 py-2'>Go to card</NavLink>
+                        <NavLink to='/cart' className='btn btn-outline-dark shadow-lg ms-2 px-3 py-2'>
+                            Go to card
+                        </NavLink>
                     </div>
                 </div>
 

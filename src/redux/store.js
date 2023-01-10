@@ -1,33 +1,31 @@
-/* eslint-disable no-const-assign */
-import rootReducers from './reducer';
+import { configureStore } from "@reduxjs/toolkit";
+import { cartReducer } from "./cartSlice";
+import storage from 'redux-persist/lib/storage';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
 
-
-
-
-function createStore(){
-    const state = 0;
-    const dispatch = function(action){
-        if(action.type === 'ADDITEM'){
-            state = state + action.payload;
-        }
-        else 
-        if(action.type === 'DELITEM'){
-            state = state - action.payload;
-        }
-    };
-
-    const getState = function(){
-        return state;
-    }
-    return{
-        dispatch,
-        getState
-    };
-
-    
+const persistConfig = {
+  key: 'root',
+  storage,
 }
+const persistedReducer = persistReducer(persistConfig, cartReducer)
 
-const store = createStore(rootReducers);
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+})
 
-export default store;
-
+export const persistor = persistStore(store)
