@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { NavLink } from 'react-router-dom';
+import '../css/Product.css';
 
 
 export default function Products() {
@@ -8,24 +9,21 @@ export default function Products() {
     const [data, setdata] = useState([]);
     const [filter, setFilter] = useState(data);
 
-    let componentMounted = true;
+
 
 
     useEffect(() => {
         const getProducts = async () => {
 
             const response = await fetch(`http://fakestoreapi.com/products`);
-            if (componentMounted) {
-                setdata(await response.clone().json());
-                setFilter(await response.json());
 
-
-            }
+            setdata(await response.clone().json());
+            setFilter(await response.json());
 
         }
 
         getProducts();
-    }, [componentMounted]);
+    }, []);
 
 
 
@@ -46,15 +44,15 @@ export default function Products() {
                     <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
 
                 </div>
-                <hr className='shadow-lg' />
+
 
 
 
                 {filter.map((product) => {
                     return (
                         <>
-                            <div className="col-md-3 mb-4 text-black">
-                                <div className="card h-100 text-center p-4 shadow-lg" key={product.id}>
+                            <div className="up col-md-3 mb-4 text-black">
+                                <div className="card h-100 text-center p-4" key={product.id}>
                                     <img src={product.image} className="card-img-top" alt={product.title} height={250} />
                                     <div className="card-body">
                                         <h5 className="card-title mb-0">{product.title.substring(0, 12)}</h5>
@@ -74,15 +72,14 @@ export default function Products() {
     }
 
     return (
-        <div className='shadow-lg'>
+        <div className='content shadow-lg'>
             <div className="container my-5 py-5">
-                <div className="row justify-content-center shadow-lg">
-                    <div className="col-12 shadow-lg">
-                        <h1 className='display-6 lead text-uppercase fw-bold text-black text-center'>Latest Products</h1>
-
+                <div className="row justify-content-center">
+                    <div className="col-12">
+                        <h1 className='display-6 fw-bold text-black text-center'>Latest Products</h1>
                     </div>
-                    <hr className='shadow-lg' />
-                    <div className=" row justify-content-center">
+
+                    <div className="products row justify-content-center">
                         {<ShowProducts />}
                     </div>
                 </div>

@@ -1,0 +1,90 @@
+
+.main {
+    
+    background: #f1f1f1;
+    justify-content: center;
+    
+}
+
+.form2 {
+    width: 360px;
+    padding: 32px 24px;
+    text-align: center;
+    background: #fff;
+    border-radius: 2px;
+    margin: 24px;
+    align-self: center;
+    box-shadow: 0 2px 5px 0 rgba(51, 62, 73, .1);
+}
+
+.form2 .heading {
+    font-size: 2rem;
+}
+
+
+.form2-group {
+    display: flex;
+    margin-bottom: 16px;
+    flex-direction: column;
+}
+
+.form2-label,
+.form2-message {
+    text-align: left;
+}
+
+.form2-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.form2-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+}
+
+.form2-control:hover {
+    border-color: #1dbfaf;
+}
+
+.form2-group.invalid .form-control {
+    border-color: #f33a58;
+}
+
+.form2-group.invalid .form-message {
+    color: #f33a58;
+}
+
+.form2-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
+}
+
+.form2-submit {
+    outline: none;
+    background-color: #1dbfaf;
+    margin-top: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form2-submit:hover {
+    background-color: #1ac7b6;
+}
+
+.spacer {
+    margin-top: 36px;
+}

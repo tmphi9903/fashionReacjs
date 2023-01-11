@@ -17,9 +17,9 @@ function Total() {
 
   return (
     <div className="total">
-      <h2>ORDER SUMMARY</h2>
+      <h2>SUM MONEY</h2>
       <div>
-        <p className="total__p">
+        <p>
           total ({getTotal().totalQuantity} product)
           : <strong>${getTotal().totalPrice}</strong>
         </p>

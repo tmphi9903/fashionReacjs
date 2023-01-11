@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import '../css/Navbar.css';
 
 //-- redux cart
 import { useSelector } from 'react-redux';
@@ -18,9 +19,9 @@ export default function Navbar() {
     return (
         <div className='bg-light shadow-lg'>
             <nav className="navbar navbar-inverse navbar-expand-lg py-3 shadow-lg fw-bold">
-                <div className="container shadow-sm">
+                <div className="container">
 
-                    <NavLink className="navbar-brand fs-4" to="/">MEANFI SHOP</NavLink>
+                    <NavLink className="Logo navbar-brand text-black" to="/">MEANFI SHOP</NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -41,9 +42,9 @@ export default function Navbar() {
                             </li>
                         </ul>
                         <div className="buttons">
-                            <NavLink to="/login" className="btn btn-outline-dark "><i className="fa fa-sign-in me-1"></i>Login</NavLink>
-                            <NavLink to="/register" className="btn btn-outline-dark ms-2"><i className="fa fa-user-plus me-1"></i>Register</NavLink>
-                            <NavLink to="/cart" className="btn btn-outline-dark ms-2">
+                            <NavLink to="/login" className="btn btn-outline-dark text-black fw-bold"><i className="fa fa-sign-in me-1"></i>Login</NavLink>
+                            <NavLink to="/register" className="btn btn-outline-dark ms-2 text-black fw-bold"><i className="fa fa-user-plus me-1"></i>Register</NavLink>
+                            <NavLink to="/cart" className="btn btn-outline-dark ms-2 text-black fw-bold">
                                 <i className="fa fa-shopping-cart me-1"></i>
                                 {getTotalQuantity()}
                             </NavLink>

@@ -1,24 +1,20 @@
 .total {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   width: 270px;
   height: 110px;
-  padding: 20px;
-  background: white;
+  
   border-radius: 3px;
   min-width: 350px;
 }
 
 .total>h2 {
-  font-weight: 400;
+  padding-top: 30px;
 }
 
-.total__p {
-  font-size: 20px;
-  font-weight: 450;
-  color: rgb(72, 77, 77);
-}
+
+
 
 .total>button:active {
   background-color: unset;
